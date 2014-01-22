@@ -1,10 +1,12 @@
-package com.shaunericcarlson.bridgeai;
+package com.shaunericcarlson.bridgeai.bidnetwork;
 
 import java.util.Random;
 
 public class NeuralNetwork {
 	public static double ETA = 0.3;
 	public static double MOMENTUM_RATE = 0.1;
+	public static final double HIGH = 0.9;
+	public static final double LOW = 0.1;
 	
 	private static final Random RAND = new Random();
 	private static final double RANGE_MIN = -0.05;

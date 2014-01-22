@@ -17,6 +17,40 @@ public class Card implements Comparable<Card> {
         this.value = (rank > 10) ? rank - 10 : 0;
     }
     
+    public Card(String rank, Suit suit) {
+        switch (rank.charAt(0)) {
+            case 'A':
+            case 'a':
+                this.rank = 14; break;
+            case 'K':
+            case 'k':
+                this.rank = 13; break;
+            case 'Q':
+            case 'q':
+                this.rank = 12; break;
+            case 'J':
+            case 'j':
+                this.rank = 11; break;
+            case 'T':
+            case 't':
+                this.rank = 10; break;
+            case '9':
+            case '8':
+            case '7':
+            case '6':
+            case '5':
+            case '4':
+            case '3':
+            case '2':
+                this.rank = Integer.parseInt(rank.substring(0, 1)); break;
+            default:
+                throw new RuntimeException("Invalid rank [" + rank + "]");
+        }
+        
+        this.suit = suit;
+        this.value = (this.rank > 10) ? this.rank - 10 : 0;
+    }
+    
     public Card(Card c) {
         this.suit = c.suit;
         this.rank = c.rank;
@@ -34,6 +68,16 @@ public class Card implements Comparable<Card> {
         }
         
         return c;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        boolean isEqual = false;
+        if (o.getClass().equals(Card.class)) {
+            if (((Card)o).suit == this.suit && ((Card)o).rank == this.rank) isEqual = true;
+        }
+        
+        return isEqual;
     }
     
     public String getRank() {
@@ -54,6 +98,11 @@ public class Card implements Comparable<Card> {
         }
         
         return val;
+    }
+    
+    @Override
+    public int hashCode() {
+        return (this.suit.ordinal() * 10) + this.rank;
     }
     
     @Override
