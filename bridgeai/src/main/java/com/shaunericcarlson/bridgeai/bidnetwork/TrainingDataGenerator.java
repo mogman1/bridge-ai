@@ -46,7 +46,6 @@ public class TrainingDataGenerator {
             
             s += " " + this.lhoBid + " " + this.partnerBid + " " + this.rhoBid + " " + this.myLastBid;
             s += " " + this.bidShouldBe;
-            System.out.println(s);
             if (!this.trainingData.containsKey(s)) this.trainingData.put(s, new BidTrainingData(s));
         }
             

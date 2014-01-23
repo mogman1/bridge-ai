@@ -104,15 +104,15 @@ public class BidTrainingData {
     
     public double[] getOutputs() {
         double[] outputs = {
-                NeuralNetwork.LOW,
-                NeuralNetwork.LOW,
-                NeuralNetwork.LOW,
-                NeuralNetwork.LOW,
-                NeuralNetwork.LOW,
-                NeuralNetwork.LOW,
-                NeuralNetwork.LOW,
-                NeuralNetwork.LOW,
-                NeuralNetwork.LOW,
+                NeuralNetwork.LOW, //club
+                NeuralNetwork.LOW, //diamond
+                NeuralNetwork.LOW, //heart
+                NeuralNetwork.LOW, //spade
+                NeuralNetwork.LOW, //notrump
+                NeuralNetwork.LOW, //double
+                NeuralNetwork.LOW, //redouble
+                NeuralNetwork.LOW, //pass
+                NeuralNetwork.LOW, //unknown
         };
         
         String bid = this.shouldBe;
@@ -126,11 +126,11 @@ public class BidTrainingData {
             outputs[3] = NeuralNetwork.HIGH;
         } else if (bid.equalsIgnoreCase("n")){
             outputs[4] = NeuralNetwork.HIGH;
-        } else if (bid.equalsIgnoreCase("p")) {
-            outputs[5] = NeuralNetwork.HIGH;
         } else if (bid.equalsIgnoreCase("x")) {
-            outputs[6] = NeuralNetwork.HIGH;
+            outputs[5] = NeuralNetwork.HIGH;
         } else if (bid.equalsIgnoreCase("r")) {
+            outputs[6] = NeuralNetwork.HIGH;
+        } else if (bid.equalsIgnoreCase("p")) {
             outputs[7] = NeuralNetwork.HIGH;
         } else {
             outputs[8] = NeuralNetwork.HIGH;

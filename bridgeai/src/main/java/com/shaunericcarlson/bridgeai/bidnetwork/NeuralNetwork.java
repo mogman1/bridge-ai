@@ -11,7 +11,6 @@ public class NeuralNetwork {
 	private static final Random RAND = new Random();
 	private static final double RANGE_MIN = -0.05;
 	private static final double RANGE_MAX = 0.05;
-	private static final double ERROR_TOLERANCE = 0.0007;
 	
 	private double[] inputs;
 	private double[] hiddens;
@@ -192,15 +191,12 @@ public class NeuralNetwork {
 	
 	public void train(double[] inputs, double[] targetOutput) {
 		double[] actualOutput = this.computeOutputs(inputs);
-		while (this.getError(targetOutput) > NeuralNetwork.ERROR_TOLERANCE) {
-			//update output weights
-			double[] deltaK = this.adjustOutputWeights(actualOutput, targetOutput);
-			this.adjustHiddenWeights(deltaK);
-			
-			//recompute outputs
-			this.compute();
-			actualOutput = this.getOutputs();
-		}
+		double[] deltaK = this.adjustOutputWeights(actualOutput, targetOutput);
+		this.adjustHiddenWeights(deltaK);
+		
+		//recompute outputs
+		this.compute();
+		actualOutput = this.getOutputs();
 	}
 
 	/**
