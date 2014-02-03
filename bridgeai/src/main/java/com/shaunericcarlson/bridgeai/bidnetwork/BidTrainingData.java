@@ -13,7 +13,7 @@ public class BidTrainingData {
     private String partnerBid;
     private String lhoBid;
     private String myLastBid;
-    private String shouldBe;
+    public String shouldBe;
     
     public BidTrainingData(String bidData) {
         String[] components = bidData.split("\\s+");
@@ -78,21 +78,21 @@ public class BidTrainingData {
                 this.myHand.getDiamondsLength(),
                 this.myHand.getClubsLength(),
                 (double)(this.myHand.getMinimumHcp() + this.myHand.getMaximumHcp()) / 2,
-                this.rho.getSpadesLength(),
-                this.rho.getHeartsLength(),
-                this.rho.getDiamondsLength(),
-                this.rho.getClubsLength(),
-                (double)(this.rho.getMinimumHcp() + this.rho.getMaximumHcp()) / 2,
+//                this.rho.getSpadesLength(),
+//                this.rho.getHeartsLength(),
+//                this.rho.getDiamondsLength(),
+//                this.rho.getClubsLength(),
+//                (double)(this.rho.getMinimumHcp() + this.rho.getMaximumHcp()) / 2,
                 this.partner.getSpadesLength(),
                 this.partner.getHeartsLength(),
                 this.partner.getDiamondsLength(),
                 this.partner.getClubsLength(),
                 (double)(this.partner.getMinimumHcp() + this.partner.getMaximumHcp()) / 2,
-                this.lho.getSpadesLength(),
-                this.lho.getHeartsLength(),
-                this.lho.getDiamondsLength(),
-                this.lho.getClubsLength(),
-                (double)(this.lho.getMinimumHcp() + this.lho.getMaximumHcp()) / 2,
+//                this.lho.getSpadesLength(),
+//                this.lho.getHeartsLength(),
+//                this.lho.getDiamondsLength(),
+//                this.lho.getClubsLength(),
+//                (double)(this.lho.getMinimumHcp() + this.lho.getMaximumHcp()) / 2,
                 this.convertBidString(this.rhoBid),
                 this.convertBidString(this.partnerBid),
                 this.convertBidString(this.lhoBid),

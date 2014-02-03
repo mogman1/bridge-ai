@@ -3,14 +3,14 @@ package com.shaunericcarlson.bridgeai.bidnetwork;
 import java.util.Collection;
 
 public class OneLevel {
-	private final static double ERROR_TOLERANCE = 0.01;
-	private final static int NUMBER_OF_INPUTS = 24;
+	private final static double ERROR_TOLERANCE = 0.05;
+	private final static int NUMBER_OF_INPUTS = 14;
 	private final static int NUMBER_OF_OUTPUTS = 9;
 	private NeuralNetwork nn;
 	private Collection<BidTrainingData> bids;
 	
 	public OneLevel(Collection<BidTrainingData> bids) {
-		int hiddens = (NUMBER_OF_INPUTS + NUMBER_OF_OUTPUTS) / 2 + 10;
+		int hiddens = (NUMBER_OF_INPUTS + NUMBER_OF_OUTPUTS) / 2 + 0;
 		this.nn = new NeuralNetwork(NUMBER_OF_INPUTS, hiddens, NUMBER_OF_OUTPUTS);
 		this.bids = bids;
 	}
