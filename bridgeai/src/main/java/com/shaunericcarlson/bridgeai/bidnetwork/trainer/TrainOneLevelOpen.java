@@ -106,7 +106,7 @@ public class TrainOneLevelOpen {
         for (BidTrainingData btd : trainingData) {
             trainingCount++;
             Bid computed = ol.getBid(btd);
-            if (btd.shouldBe.equals(computed.toString())) {
+            if (btd.shouldBe == computed) {
                 trainingAccuracy++;
             } else {
 //                System.out.println(btd + " - " + ol.getBid(btd));
@@ -119,7 +119,7 @@ public class TrainOneLevelOpen {
         for (BidTrainingData btd : testHands) {
             testCount++;
             Bid computed = ol.getBid(btd);
-            if (btd.shouldBe.equals(computed.toString())) {
+            if (btd.shouldBe == computed) {
                 testAccuracy++;
             } else {
 //                System.out.println(btd + " - " + ol.getBid(btd));

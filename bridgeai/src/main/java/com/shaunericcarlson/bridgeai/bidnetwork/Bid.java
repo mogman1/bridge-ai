@@ -9,9 +9,56 @@ public enum Bid {
     DOUBLE,
     REDOUBLE,
     PASS,
-    UNKNOWN;
-//    NONE;
     
+    /**
+     * For use in bidding algorithm, indicates that the proper bid cannot be determined
+     * by the current neural network
+     */
+    UNKNOWN,
+    
+    /**
+     * Only used when a bid does not exist, as in that player has not yet had a chance to bid.
+     * Any other usage is invalid.
+     */
+    NONE;
+    
+    public int level;
+    
+    public static Bid getFromChar(char b) {
+        Bid bid;
+        switch(b) {
+            case 'S':
+            case 's':
+                bid = SPADE; break;
+            case 'C':
+            case 'c':
+                bid = CLUB; break;
+            case 'D':
+            case 'd':
+                bid = DIAMOND; break;
+            case 'H':
+            case 'h':
+                bid = HEART; break;
+            case 'N':
+            case 'n':
+                bid = NOTRUMP; break;
+            case 'X':
+            case 'x':
+                bid = DOUBLE; break;
+            case 'R':
+            case 'r':
+                bid = REDOUBLE; break;
+            case 'P':
+            case 'p':
+                bid = PASS; break;
+            case '-':
+                bid = NONE; break;
+            default:
+                bid = UNKNOWN;
+        }
+        
+        return bid;
+    }
     
     @Override
     public String toString() {
@@ -33,10 +80,10 @@ public enum Bid {
                 s = "R"; break;
             case PASS:
                 s = "P"; break;
-//            case NONE:
-            default:
+            case NONE:
                 s = "-"; break;
-//                s = "U"; break;
+            default:
+                s = "U"; break;
         }
         
         return s;

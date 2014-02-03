@@ -61,30 +61,6 @@ public class TrainingDataGenerator {
         this.myLastBid    = components[i++];
     }
     
-    public TrainingDataGenerator(String shape, int minHcp, int maxHcp, Bid bidShouldBe) {
-        this.lhoBid = this.rhoBid = this.partnerBid = this.myLastBid = "-";
-        this.bidShouldBe = bidShouldBe.toString();
-        this.maxHcp = maxHcp;
-        this.minHcp = minHcp;
-        this.shape = shape;
-        this.rhoShape = this.lhoShape = this.partnerShape = "-";
-        this.rhoMaxHcp = this.rhoMinHcp = this.lhoMaxHcp = this.lhoMinHcp = this.partnerMaxHcp = this.partnerMinHcp = -1;
-    }
-    
-    public void addBids(String rhoBid) {
-        this.addBids(rhoBid, "-", "-");
-    }
-    
-    public void addBids(String rhoBid, String partnerBid) {
-        this.addBids(rhoBid, partnerBid, "-");
-    }
-    
-    public void addBids(String rhoBid, String partnerBid, String lhoBid) {
-        this.rhoBid = rhoBid;
-        this.partnerBid = partnerBid;
-        this.lhoBid = lhoBid;
-    }
-    
     private CrookedDealer createDealer() {
         CrookedDealer dealer = new CrookedDealer(this.shape, this.maxHcp, this.minHcp);
         if (!this.rhoShape.equals("-")) {

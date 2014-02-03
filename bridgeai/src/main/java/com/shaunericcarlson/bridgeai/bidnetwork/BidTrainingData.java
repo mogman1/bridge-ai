@@ -13,7 +13,7 @@ public class BidTrainingData {
     private String partnerBid;
     private String lhoBid;
     private String myLastBid;
-    public String shouldBe;
+    public Bid shouldBe;
     
     public BidTrainingData(String bidData) {
         String[] components = bidData.split("\\s+");
@@ -31,7 +31,7 @@ public class BidTrainingData {
         this.partnerBid = components[8];
         this.lhoBid = components[9];
         this.myLastBid = components[10];
-        this.shouldBe = components[11];
+        this.shouldBe = Bid.getFromChar(components[11].charAt(0));
     }
     
     private int convertBidString(String bid) {
@@ -115,25 +115,25 @@ public class BidTrainingData {
                 NeuralNetwork.LOW, //unknown
         };
         
-        String bid = this.shouldBe;
-        if (bid.equalsIgnoreCase("c")) {
-            outputs[0] = NeuralNetwork.HIGH;
-        } else if (bid.equalsIgnoreCase("d")) {
-            outputs[1] = NeuralNetwork.HIGH;
-        } else if (bid.equalsIgnoreCase("h")) {
-            outputs[2] = NeuralNetwork.HIGH;
-        } else if (bid.equalsIgnoreCase("s")){
-            outputs[3] = NeuralNetwork.HIGH;
-        } else if (bid.equalsIgnoreCase("n")){
-            outputs[4] = NeuralNetwork.HIGH;
-        } else if (bid.equalsIgnoreCase("x")) {
-            outputs[5] = NeuralNetwork.HIGH;
-        } else if (bid.equalsIgnoreCase("r")) {
-            outputs[6] = NeuralNetwork.HIGH;
-        } else if (bid.equalsIgnoreCase("p")) {
-            outputs[7] = NeuralNetwork.HIGH;
-        } else {
-            outputs[8] = NeuralNetwork.HIGH;
+        switch (this.shouldBe) {
+            case CLUB:
+                outputs[0] = NeuralNetwork.HIGH; break;
+            case DIAMOND:
+                outputs[1] = NeuralNetwork.HIGH; break;
+            case HEART:
+                outputs[2] = NeuralNetwork.HIGH; break;
+            case SPADE:
+                outputs[3] = NeuralNetwork.HIGH; break;
+            case NOTRUMP:
+                outputs[4] = NeuralNetwork.HIGH; break;
+            case DOUBLE:
+                outputs[5] = NeuralNetwork.HIGH; break;
+            case REDOUBLE:
+                outputs[6] = NeuralNetwork.HIGH; break;
+            case PASS:
+                outputs[7] = NeuralNetwork.HIGH; break;
+            default:
+                outputs[8] = NeuralNetwork.HIGH; break;
         } 
         
         return outputs;
