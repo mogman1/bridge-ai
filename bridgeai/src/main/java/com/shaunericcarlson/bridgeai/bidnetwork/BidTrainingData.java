@@ -70,7 +70,7 @@ public class BidTrainingData {
         
         return convertedBid;
     }
-
+    
     public double[] getInputs() {
         double[] data = {
                 this.myHand.getSpadesLength(),
@@ -78,16 +78,19 @@ public class BidTrainingData {
                 this.myHand.getDiamondsLength(),
                 this.myHand.getClubsLength(),
                 (double)(this.myHand.getMinimumHcp() + this.myHand.getMaximumHcp()) / 2,
+                
 //                this.rho.getSpadesLength(),
 //                this.rho.getHeartsLength(),
 //                this.rho.getDiamondsLength(),
 //                this.rho.getClubsLength(),
 //                (double)(this.rho.getMinimumHcp() + this.rho.getMaximumHcp()) / 2,
-                this.partner.getSpadesLength(),
-                this.partner.getHeartsLength(),
-                this.partner.getDiamondsLength(),
-                this.partner.getClubsLength(),
-                (double)(this.partner.getMinimumHcp() + this.partner.getMaximumHcp()) / 2,
+                
+//                this.partner.getSpadesLength(),
+//                this.partner.getHeartsLength(),
+//                this.partner.getDiamondsLength(),
+//                this.partner.getClubsLength(),
+//                (double)(this.partner.getMinimumHcp() + this.partner.getMaximumHcp()) / 2,
+                
 //                this.lho.getSpadesLength(),
 //                this.lho.getHeartsLength(),
 //                this.lho.getDiamondsLength(),

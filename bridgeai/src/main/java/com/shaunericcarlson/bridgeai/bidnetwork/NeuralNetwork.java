@@ -1,10 +1,13 @@
 package com.shaunericcarlson.bridgeai.bidnetwork;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Random;
 
 public class NeuralNetwork {
-	public static double ETA = 0.15;
-	public static double MOMENTUM_RATE = 0.1;
+	public static double ETA = 0.17;
+	public static double MOMENTUM_RATE = 0.12;
 	public static final double HIGH = 0.9;
 	public static final double LOW = 0.1;
 	
@@ -42,6 +45,61 @@ public class NeuralNetwork {
 		this.outputs = new double[numberOfOutputs];
 		this.outputBiases = this.initializeBiasWeights(numberOfOutputs, true);
 		this.prevDeltaOutputBiases = this.initializeBiasWeights(numberOfOutputs, false);
+	}
+	
+	public NeuralNetwork(BufferedReader r) throws IOException {
+        ArrayList<ArrayList<Double>> hiddensToInputs = new ArrayList<ArrayList<Double>>();
+        ArrayList<ArrayList<Double>> outputsToHiddens = new ArrayList<ArrayList<Double>>();
+	    String line = r.readLine();
+	    line = r.readLine();
+	    while (!line.equals("")) {
+	        ArrayList<Double> subList = new ArrayList<Double>();
+    	    while (!line.equals("")) {
+    	        subList.add(Double.parseDouble(line));
+    	        line = r.readLine();
+    	    }
+    	    
+    	    hiddensToInputs.add(subList);
+    	    line = r.readLine();
+	    }
+	    
+	    line = r.readLine();
+        while (line != null && !line.equals("")) {
+            ArrayList<Double> subList = new ArrayList<Double>();
+            while (line != null && !line.equals("")) {
+                subList.add(Double.parseDouble(line));
+                line = r.readLine();
+            }
+            
+            outputsToHiddens.add(subList);
+            line = r.readLine();
+        }
+	    
+        this.inputs = new double[hiddensToInputs.get(0).size() - 1];
+        this.hiddens = new double[hiddensToInputs.size()];
+        this.outputs = new double[outputsToHiddens.size()];
+        
+        this.inputToHiddenWeights = new double[this.inputs.length][this.hiddens.length];
+        this.hiddenBiases = new double[this.hiddens.length];
+        for (int i = 0; i < hiddensToInputs.size(); i++) {
+            int j = 0;
+            for (j = 0; j < hiddensToInputs.get(i).size() - 1; j++) {
+                this.inputToHiddenWeights[j][i] = hiddensToInputs.get(i).get(j);
+            }
+            
+            this.hiddenBiases[i] = hiddensToInputs.get(i).get(j);
+        }
+        
+        this.hiddenToOutputWeights = new double[this.hiddens.length][this.outputs.length];
+        this.outputBiases = new double[this.outputs.length];
+        for (int i = 0; i < outputsToHiddens.size(); i++) {
+            int j = 0;
+            for (j = 0; j < outputsToHiddens.get(i).size() - 1; j++) {
+                this.hiddenToOutputWeights[j][i] = outputsToHiddens.get(i).get(j);
+            }
+            
+            this.outputBiases[i] = outputsToHiddens.get(i).get(j);
+        }
 	}
 
 	private void adjustHiddenWeights(double[] deltaK) {

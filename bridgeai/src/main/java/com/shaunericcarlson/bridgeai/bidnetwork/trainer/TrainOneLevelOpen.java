@@ -25,6 +25,8 @@ public class TrainOneLevelOpen {
         bids.add(new TrainingDataGenerator("****|*****|***|* 18-21 - - - - - - H - - - -"));
         bids.add(new TrainingDataGenerator("****|*****|*|*** 12-21 - - - - - - H - - - -"));
         bids.add(new TrainingDataGenerator("**|*****|****|** 12-19 - - - - - - H - - - -"));
+        bids.add(new TrainingDataGenerator("*|*****|***|**** 12-21 - - - - - - H - - - -"));
+        bids.add(new TrainingDataGenerator("*|*****|****|*** 12-21 - - - - - - H - - - -"));
         bids.add(new TrainingDataGenerator("*****|***|***|** 12-14 - - - - - - S - - - -"));
         bids.add(new TrainingDataGenerator("*****|***|***|** 18-19 - - - - - - S - - - -"));
         bids.add(new TrainingDataGenerator("*****|***|**|*** 18-19 - - - - - - S - - - -"));
@@ -34,13 +36,29 @@ public class TrainOneLevelOpen {
         bids.add(new TrainingDataGenerator("*****|***|****|* 15-17 - - - - - - S - - - -"));
         bids.add(new TrainingDataGenerator("*****|***|****|* 18-21 - - - - - - S - - - -"));
         bids.add(new TrainingDataGenerator("*****|***|*|**** 12-21 - - - - - - S - - - -"));
+        bids.add(new TrainingDataGenerator("*****|*|**|***** 12-14 - - - - - - S - - - -"));
+        bids.add(new TrainingDataGenerator("******|***|**|** 12-21 - - - - - - S - - - -"));
+        bids.add(new TrainingDataGenerator("******|****|*|** 12-21 - - - - - - S - - - -"));
+        bids.add(new TrainingDataGenerator("******|***|**|** 06-10 - - - - - - U - - - -"));
+        bids.add(new TrainingDataGenerator("******|**|**|*** 06-10 - - - - - - U - - - -"));
+        bids.add(new TrainingDataGenerator("******|**|**|*** 00-04 - - - - - - P - - - -"));
+        bids.add(new TrainingDataGenerator("********|***|**| 00-04 - - - - - - P - - - -"));
+        bids.add(new TrainingDataGenerator("*******|***|**|* 00-04 - - - - - - P - - - -"));
+        bids.add(new TrainingDataGenerator("********|***|**| 06-10 - - - - - - U - - - -"));
+        bids.add(new TrainingDataGenerator("********|***|**| 12-20 - - - - - - S - - - -"));
+        bids.add(new TrainingDataGenerator("*******|***|**|* 06-10 - - - - - - U - - - -"));
+        bids.add(new TrainingDataGenerator("*******|***|**|* 12-20 - - - - - - S - - - -"));
         bids.add(new TrainingDataGenerator("****|****|***|** 12-14 - - - - - - D - - - -"));
         bids.add(new TrainingDataGenerator("****|***|****|** 12-14 - - - - - - D - - - -"));
         bids.add(new TrainingDataGenerator("***|***|****|*** 12-14 - - - - - - D - - - -"));
         bids.add(new TrainingDataGenerator("***|**|*****|*** 12-14 - - - - - - D - - - -"));
         bids.add(new TrainingDataGenerator("**|***|*****|*** 12-14 - - - - - - D - - - -"));
         bids.add(new TrainingDataGenerator("***|****|****|** 12-14 - - - - - - D - - - -"));
+        bids.add(new TrainingDataGenerator("|**|*******|**** 12-21 - - - - - - D - - - -"));
+        bids.add(new TrainingDataGenerator("*|**|******|**** 12-21 - - - - - - D - - - -"));
+        bids.add(new TrainingDataGenerator("*|***|*****|**** 12-21 - - - - - - D - - - -"));
         bids.add(new TrainingDataGenerator("****|****|**|*** 12-14 - - - - - - C - - - -"));
+        bids.add(new TrainingDataGenerator("|****|****|***** 12-20 - - - - - - C - - - -"));
         bids.add(new TrainingDataGenerator("****|***|***|*** 12-14 - - - - - - C - - - -"));
         bids.add(new TrainingDataGenerator("***|****|***|*** 12-14 - - - - - - C - - - -"));
         bids.add(new TrainingDataGenerator("****|***|**|**** 12-14 - - - - - - C - - - -"));
@@ -54,6 +72,9 @@ public class TrainOneLevelOpen {
         bids.add(new TrainingDataGenerator("***|****|**|**** 18-19 - - - - - - C - - - -"));
         bids.add(new TrainingDataGenerator("***|***|**|***** 18-19 - - - - - - C - - - -"));
         bids.add(new TrainingDataGenerator("***|***|***|**** 18-19 - - - - - - C - - - -"));
+        bids.add(new TrainingDataGenerator("|**|****|******* 12-21 - - - - - - C - - - -"));
+        bids.add(new TrainingDataGenerator("*|**|****|****** 12-21 - - - - - - C - - - -"));
+        bids.add(new TrainingDataGenerator("*|***|****|***** 12-21 - - - - - - C - - - -"));
         bids.add(new TrainingDataGenerator("****|***|**|**** 15-17 - - - - - - N - - - -"));
         bids.add(new TrainingDataGenerator("***|****|***|*** 15-17 - - - - - - N - - - -"));
         bids.add(new TrainingDataGenerator("***|***|****|*** 15-17 - - - - - - N - - - -"));
@@ -73,6 +94,12 @@ public class TrainOneLevelOpen {
         bids.add(new TrainingDataGenerator("***|*****|***|** 15-17 - - - - - - N - - - -"));
         bids.add(new TrainingDataGenerator("*****|**|***|*** 15-17 - - - - - - N - - - -"));
         bids.add(new TrainingDataGenerator("*****|***|***|** 15-17 - - - - - - N - - - -"));
+        
+        bids.add(new TrainingDataGenerator("****|***|***|*** 22-40 - - - - - - U - - - -"));
+        bids.add(new TrainingDataGenerator("****|***|****|** 22-40 - - - - - - U - - - -"));
+        bids.add(new TrainingDataGenerator("*****|**|***|*** 22-40 - - - - - - U - - - -"));
+        bids.add(new TrainingDataGenerator("**|*****|***|*** 22-40 - - - - - - U - - - -"));
+        bids.add(new TrainingDataGenerator("*|***|*****|**** 22-40 - - - - - - U - - - -"));
         
         int TRAIN = 20;
         int TEST = 2000;
@@ -130,6 +157,7 @@ public class TrainOneLevelOpen {
         System.out.println("Test accuracy: " + (testAccuracy / testCount));
         System.out.println("Train time: " + (float)(System.currentTimeMillis() - genTime) / 1000.0);
         System.out.println("Total run time: " + (float)(System.currentTimeMillis() - start) / 1000.0);
+        System.out.println();
         
         return ol;
     }

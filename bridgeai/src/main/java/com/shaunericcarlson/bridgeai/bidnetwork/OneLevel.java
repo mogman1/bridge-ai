@@ -1,18 +1,25 @@
 package com.shaunericcarlson.bridgeai.bidnetwork;
 
+import java.io.BufferedReader;
+import java.io.IOException;
 import java.util.Collection;
 
 public class OneLevel {
 	private final static double ERROR_TOLERANCE = 0.05;
-	private final static int NUMBER_OF_INPUTS = 14;
+	private final static int NUMBER_OF_INPUTS = 9;
 	private final static int NUMBER_OF_OUTPUTS = 9;
 	private NeuralNetwork nn;
 	private Collection<BidTrainingData> bids;
 	
 	public OneLevel(Collection<BidTrainingData> bids) {
-		int hiddens = (NUMBER_OF_INPUTS + NUMBER_OF_OUTPUTS) / 2 + 0;
+		int hiddens = (NUMBER_OF_INPUTS + NUMBER_OF_OUTPUTS) / 2 + 2;
+//	    int hiddens = 7;
 		this.nn = new NeuralNetwork(NUMBER_OF_INPUTS, hiddens, NUMBER_OF_OUTPUTS);
 		this.bids = bids;
+	}
+	
+	public OneLevel(BufferedReader r) throws IOException {
+	    this.nn = new NeuralNetwork(r);
 	}
 	
 	public Bid getBid(BidTrainingData btd) {
