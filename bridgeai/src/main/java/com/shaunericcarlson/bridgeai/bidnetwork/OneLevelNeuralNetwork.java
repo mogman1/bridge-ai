@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class NeuralNetwork {
+public class OneLevelNeuralNetwork implements NeuralNetworkInterface {
 	public static double ETA = 0.17;
 	public static double MOMENTUM_RATE = 0.12;
 	public static final double HIGH = 0.9;
@@ -31,7 +31,7 @@ public class NeuralNetwork {
 	private double[] prevDeltaHiddenBiases;
 	private double[] prevDeltaOutputBiases;
 	
-	public NeuralNetwork(int numberOfInputs, int numberOfHiddens, int numberOfOutputs) {
+	public OneLevelNeuralNetwork(int numberOfInputs, int numberOfHiddens, int numberOfOutputs) {
 		this.inputs = new double[numberOfInputs];
 		this.inputToHiddenWeights = this.initializeWeightMatrix(numberOfInputs, numberOfHiddens, true);
 		this.prevDeltaInputToHiddenWeights = this.initializeWeightMatrix(numberOfInputs, numberOfHiddens, false);
@@ -47,7 +47,7 @@ public class NeuralNetwork {
 		this.prevDeltaOutputBiases = this.initializeBiasWeights(numberOfOutputs, false);
 	}
 	
-	public NeuralNetwork(BufferedReader r) throws IOException {
+	public OneLevelNeuralNetwork(BufferedReader r) throws IOException {
         ArrayList<ArrayList<Double>> hiddensToInputs = new ArrayList<ArrayList<Double>>();
         ArrayList<ArrayList<Double>> outputsToHiddens = new ArrayList<ArrayList<Double>>();
 	    String line = r.readLine();
@@ -111,12 +111,12 @@ public class NeuralNetwork {
 			
 			double deltaH = this.hiddens[i] * (1 - this.hiddens[i]) * error;
 			for (int j = 0; j < this.inputs.length; j++) {
-				double deltaW = (NeuralNetwork.ETA * deltaH * this.inputs[j]) + (NeuralNetwork.MOMENTUM_RATE * this.prevDeltaInputToHiddenWeights[j][i]);
+				double deltaW = (OneLevelNeuralNetwork.ETA * deltaH * this.inputs[j]) + (OneLevelNeuralNetwork.MOMENTUM_RATE * this.prevDeltaInputToHiddenWeights[j][i]);
 				this.inputToHiddenWeights[j][i] += deltaW;
 				this.prevDeltaInputToHiddenWeights[j][i] = deltaW;
 			}
 			
-			double deltaBiasW = (NeuralNetwork.ETA * deltaH * 1.0) + (NeuralNetwork.MOMENTUM_RATE * this.prevDeltaHiddenBiases[i]);
+			double deltaBiasW = (OneLevelNeuralNetwork.ETA * deltaH * 1.0) + (OneLevelNeuralNetwork.MOMENTUM_RATE * this.prevDeltaHiddenBiases[i]);
 			this.hiddenBiases[i] += deltaBiasW;
 			this.prevDeltaHiddenBiases[i] = deltaBiasW;
 		}
@@ -128,12 +128,12 @@ public class NeuralNetwork {
 			double error = targetOutput[i] - actualOutput[i];
 			deltaK[i] = actualOutput[i] * (1 - actualOutput[i]) * error;
 			for (int j = 0; j < this.hiddens.length; j++) {
-				double deltaW = (NeuralNetwork.ETA * deltaK[i] * this.hiddens[j]) + (NeuralNetwork.MOMENTUM_RATE * this.prevDeltaHiddenToOutputWeights[j][i]);
+				double deltaW = (OneLevelNeuralNetwork.ETA * deltaK[i] * this.hiddens[j]) + (OneLevelNeuralNetwork.MOMENTUM_RATE * this.prevDeltaHiddenToOutputWeights[j][i]);
 				this.hiddenToOutputWeights[j][i] += deltaW;
 				this.prevDeltaHiddenToOutputWeights[j][i] = deltaW;
 			}
 			
-			double deltaBiasW = (NeuralNetwork.ETA * 1.0 * deltaK[i]) + (NeuralNetwork.MOMENTUM_RATE * this.prevDeltaOutputBiases[i]);
+			double deltaBiasW = (OneLevelNeuralNetwork.ETA * 1.0 * deltaK[i]) + (OneLevelNeuralNetwork.MOMENTUM_RATE * this.prevDeltaOutputBiases[i]);
 			this.outputBiases[i] += deltaBiasW;
 			this.prevDeltaOutputBiases[i] = deltaBiasW;
 		}

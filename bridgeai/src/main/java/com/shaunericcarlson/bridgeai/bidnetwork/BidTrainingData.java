@@ -79,23 +79,23 @@ public class BidTrainingData {
                 this.myHand.getClubsLength(),
                 (double)(this.myHand.getMinimumHcp() + this.myHand.getMaximumHcp()) / 2,
                 
-//                this.rho.getSpadesLength(),
-//                this.rho.getHeartsLength(),
-//                this.rho.getDiamondsLength(),
-//                this.rho.getClubsLength(),
-//                (double)(this.rho.getMinimumHcp() + this.rho.getMaximumHcp()) / 2,
+                this.rho.getSpadesLength(),
+                this.rho.getHeartsLength(),
+                this.rho.getDiamondsLength(),
+                this.rho.getClubsLength(),
+                (double)(this.rho.getMinimumHcp() + this.rho.getMaximumHcp()) / 2,
                 
-//                this.partner.getSpadesLength(),
-//                this.partner.getHeartsLength(),
-//                this.partner.getDiamondsLength(),
-//                this.partner.getClubsLength(),
-//                (double)(this.partner.getMinimumHcp() + this.partner.getMaximumHcp()) / 2,
+                this.partner.getSpadesLength(),
+                this.partner.getHeartsLength(),
+                this.partner.getDiamondsLength(),
+                this.partner.getClubsLength(),
+                (double)(this.partner.getMinimumHcp() + this.partner.getMaximumHcp()) / 2,
                 
-//                this.lho.getSpadesLength(),
-//                this.lho.getHeartsLength(),
-//                this.lho.getDiamondsLength(),
-//                this.lho.getClubsLength(),
-//                (double)(this.lho.getMinimumHcp() + this.lho.getMaximumHcp()) / 2,
+                this.lho.getSpadesLength(),
+                this.lho.getHeartsLength(),
+                this.lho.getDiamondsLength(),
+                this.lho.getClubsLength(),
+                (double)(this.lho.getMinimumHcp() + this.lho.getMaximumHcp()) / 2,
                 this.convertBidString(this.rhoBid),
                 this.convertBidString(this.partnerBid),
                 this.convertBidString(this.lhoBid),
@@ -107,36 +107,36 @@ public class BidTrainingData {
     
     public double[] getOutputs() {
         double[] outputs = {
-                NeuralNetwork.LOW, //club
-                NeuralNetwork.LOW, //diamond
-                NeuralNetwork.LOW, //heart
-                NeuralNetwork.LOW, //spade
-                NeuralNetwork.LOW, //notrump
-                NeuralNetwork.LOW, //double
-                NeuralNetwork.LOW, //redouble
-                NeuralNetwork.LOW, //pass
-                NeuralNetwork.LOW, //unknown
+                OneLevelNeuralNetwork.LOW, //club
+                OneLevelNeuralNetwork.LOW, //diamond
+                OneLevelNeuralNetwork.LOW, //heart
+                OneLevelNeuralNetwork.LOW, //spade
+                OneLevelNeuralNetwork.LOW, //notrump
+                OneLevelNeuralNetwork.LOW, //double
+                OneLevelNeuralNetwork.LOW, //redouble
+                OneLevelNeuralNetwork.LOW, //pass
+                OneLevelNeuralNetwork.LOW, //unknown
         };
         
         switch (this.shouldBe) {
             case CLUB:
-                outputs[0] = NeuralNetwork.HIGH; break;
+                outputs[0] = OneLevelNeuralNetwork.HIGH; break;
             case DIAMOND:
-                outputs[1] = NeuralNetwork.HIGH; break;
+                outputs[1] = OneLevelNeuralNetwork.HIGH; break;
             case HEART:
-                outputs[2] = NeuralNetwork.HIGH; break;
+                outputs[2] = OneLevelNeuralNetwork.HIGH; break;
             case SPADE:
-                outputs[3] = NeuralNetwork.HIGH; break;
+                outputs[3] = OneLevelNeuralNetwork.HIGH; break;
             case NOTRUMP:
-                outputs[4] = NeuralNetwork.HIGH; break;
+                outputs[4] = OneLevelNeuralNetwork.HIGH; break;
             case DOUBLE:
-                outputs[5] = NeuralNetwork.HIGH; break;
+                outputs[5] = OneLevelNeuralNetwork.HIGH; break;
             case REDOUBLE:
-                outputs[6] = NeuralNetwork.HIGH; break;
+                outputs[6] = OneLevelNeuralNetwork.HIGH; break;
             case PASS:
-                outputs[7] = NeuralNetwork.HIGH; break;
+                outputs[7] = OneLevelNeuralNetwork.HIGH; break;
             default:
-                outputs[8] = NeuralNetwork.HIGH; break;
+                outputs[8] = OneLevelNeuralNetwork.HIGH; break;
         } 
         
         return outputs;

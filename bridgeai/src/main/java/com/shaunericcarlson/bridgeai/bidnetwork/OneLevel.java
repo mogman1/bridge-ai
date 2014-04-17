@@ -5,27 +5,27 @@ import java.io.IOException;
 import java.util.Collection;
 
 public class OneLevel {
-	private final static double ERROR_TOLERANCE = 0.05;
-	private final static int NUMBER_OF_INPUTS = 9;
-	private final static int NUMBER_OF_OUTPUTS = 9;
-	private NeuralNetwork nn;
-	private Collection<BidTrainingData> bids;
-	
-	public OneLevel(Collection<BidTrainingData> bids) {
-		int hiddens = (NUMBER_OF_INPUTS + NUMBER_OF_OUTPUTS) / 2 + 2;
-//	    int hiddens = 7;
-		this.nn = new NeuralNetwork(NUMBER_OF_INPUTS, hiddens, NUMBER_OF_OUTPUTS);
-		this.bids = bids;
-	}
-	
-	public OneLevel(BufferedReader r) throws IOException {
-	    this.nn = new NeuralNetwork(r);
-	}
-	
-	public Bid getBid(BidTrainingData btd) {
-	    double[] outputs = this.nn.computeOutputs(btd.getInputs());
-	    double maxBid = -1;
-	    Bid bid = Bid.UNKNOWN;
+    private final static double ERROR_TOLERANCE = 0.05;
+    private final static int NUMBER_OF_INPUTS = 9;
+    private final static int NUMBER_OF_OUTPUTS = 9;
+    private OneLevelNeuralNetwork nn;
+    private Collection<BidTrainingData> bids;
+    
+    public OneLevel(Collection<BidTrainingData> bids) {
+        int hiddens = (NUMBER_OF_INPUTS + NUMBER_OF_OUTPUTS) / 2 + 2;
+//        int hiddens = 7;
+        this.nn = new OneLevelNeuralNetwork(NUMBER_OF_INPUTS, hiddens, NUMBER_OF_OUTPUTS);
+        this.bids = bids;
+    }
+    
+    public OneLevel(BufferedReader r) throws IOException {
+        this.nn = new OneLevelNeuralNetwork(r);
+    }
+    
+    public Bid getBid(BidTrainingData btd) {
+        double[] outputs = this.nn.computeOutputs(btd.getInputs());
+        double maxBid = -1;
+        Bid bid = Bid.UNKNOWN;
         if (outputs[0] > maxBid) {
             bid = Bid.CLUB;
             maxBid = outputs[0];
@@ -72,43 +72,43 @@ public class OneLevel {
         }
         
         return bid;
-	}
-	
-	private double getError(boolean print) {
-		double error = 0.0;
-		for (BidTrainingData btd : this.bids) {
-			double[] output = this.nn.computeOutputs(btd.getInputs());
-			double[] target = btd.getOutputs();
-			
-			for (int i = 0; i < output.length; i++) {
-			    error += Math.pow(target[i] - output[i], 2);
-			    if (print) {
-			        System.out.println(target[i] + "\t" + output[i] + "\t" + (target[i] - output[i]));
-			    }
-			}
-			
-			if (print) System.out.println("");
-		}
-		
-		return error / this.bids.size();
-	}
-	
-	public void train() {
-		int count = 0;
-		while (this.getError(false) > OneLevel.ERROR_TOLERANCE) {
-			count++;
-			for (BidTrainingData btd : this.bids) {
-				this.nn.train(btd.getInputs(), btd.getOutputs());
-			}
-			
-			if (count % 10000 == 0) {
-			    System.out.println(count + ":\t" + this.getError(false));
-			}
-		}
-		System.out.println(count);
-	}
-	
-	public String toString() {
-		return this.nn.toString();
-	}
+    }
+    
+    private double getError(boolean print) {
+        double error = 0.0;
+        for (BidTrainingData btd : this.bids) {
+            double[] output = this.nn.computeOutputs(btd.getInputs());
+            double[] target = btd.getOutputs();
+            
+            for (int i = 0; i < output.length; i++) {
+                error += Math.pow(target[i] - output[i], 2);
+                if (print) {
+                    System.out.println(target[i] + "\t" + output[i] + "\t" + (target[i] - output[i]));
+                }
+            }
+            
+            if (print) System.out.println("");
+        }
+        
+        return error / this.bids.size();
+    }
+    
+    public void train() {
+        int count = 0;
+        while (this.getError(false) > OneLevel.ERROR_TOLERANCE) {
+            count++;
+            for (BidTrainingData btd : this.bids) {
+                this.nn.train(btd.getInputs(), btd.getOutputs());
+            }
+            
+            if (count % 10000 == 0) {
+                System.out.println(count + ":\t" + this.getError(false));
+            }
+        }
+        System.out.println(count);
+    }
+    
+    public String toString() {
+        return this.nn.toString();
+    }
 }

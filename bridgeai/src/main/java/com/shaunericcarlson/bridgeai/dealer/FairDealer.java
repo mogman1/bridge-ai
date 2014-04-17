@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.shaunericcarlson.bridgeai.Card;
 import com.shaunericcarlson.bridgeai.Dealer;
+import com.shaunericcarlson.bridgeai.Direction;
 import com.shaunericcarlson.bridgeai.Hand;
 import com.shaunericcarlson.bridgeai.Suit;
 import com.shaunericcarlson.bridgeai.hand.OpenHand;
@@ -14,6 +15,7 @@ public class FairDealer extends Dealer {
     private List<Card> deck;
     
     public FairDealer() {
+        super(Direction.NORTH);
         this.deck = new ArrayList<Card>();
         for (int i = 0; i < 52; i++) {
             if (i < 13) {

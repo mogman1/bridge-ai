@@ -8,6 +8,7 @@ import java.util.Set;
 
 import com.shaunericcarlson.bridgeai.Card;
 import com.shaunericcarlson.bridgeai.Dealer;
+import com.shaunericcarlson.bridgeai.Direction;
 import com.shaunericcarlson.bridgeai.Hand;
 import com.shaunericcarlson.bridgeai.Suit;
 import com.shaunericcarlson.bridgeai.hand.HiddenHand;
@@ -49,6 +50,7 @@ public class CrookedDealer extends Dealer {
     }
     
     public CrookedDealer(String shape, int maxPoints, int minPoints) {
+        super(Direction.NORTH);
         this.myHandShape = shape;
         this.myMaxPoints = maxPoints;
         this.myMinPoints = minPoints;

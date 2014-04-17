@@ -151,11 +151,11 @@ public class OpenHand extends Hand {
     public String toString() {
         String s = "";
         for (Card c : this.spades) s += c.getRank();
-        s += "|";
+        s += ".";
         for (Card c : this.hearts) s += c.getRank();
-        s += "|";
+        s += ".";
         for (Card c : this.diamonds) s += c.getRank();
-        s += "|";
+        s += ".";
         for (Card c : this.clubs) s += c.getRank();
         
         return s;

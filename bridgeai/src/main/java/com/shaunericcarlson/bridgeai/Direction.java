@@ -29,4 +29,26 @@ public enum Direction {
         
         return next;
     }
+    
+    public static Direction TranslateShortString(String dir) {
+        if ("n".equalsIgnoreCase(dir)) {
+            return Direction.NORTH;
+        } else if ("e".equalsIgnoreCase(dir)) {
+            return Direction.EAST;
+        } else if ("s".equalsIgnoreCase(dir)) {
+            return Direction.SOUTH;
+        } else {
+            return Direction.WEST;
+        }
+    }
+    
+    public String getShortString() {
+        switch(this) {
+            case NORTH: return "N";
+            case EAST:  return "E";
+            case SOUTH: return "S";
+            case WEST:
+            default:    return "W";
+        }
+    }
 }

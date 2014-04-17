@@ -58,15 +58,15 @@ public class BidTrainingDataTest {
         
         //test outputs
         double[] outputs = btd.getOutputs();
-        assertEquals(NeuralNetwork.LOW, outputs[0], 0.0001); //C
-        assertEquals(NeuralNetwork.LOW, outputs[1], 0.0001); //D
-        assertEquals(NeuralNetwork.HIGH, outputs[2], 0.0001); //H
-        assertEquals(NeuralNetwork.LOW, outputs[3], 0.0001); //S
-        assertEquals(NeuralNetwork.LOW, outputs[4], 0.0001); //N
-        assertEquals(NeuralNetwork.LOW, outputs[5], 0.0001); //D
-        assertEquals(NeuralNetwork.LOW, outputs[6], 0.0001); //R
-        assertEquals(NeuralNetwork.LOW, outputs[7], 0.0001); //P
-        assertEquals(NeuralNetwork.LOW, outputs[8], 0.0001); //U
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[0], 0.0001); //C
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[1], 0.0001); //D
+        assertEquals(OneLevelNeuralNetwork.HIGH, outputs[2], 0.0001); //H
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[3], 0.0001); //S
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[4], 0.0001); //N
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[5], 0.0001); //D
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[6], 0.0001); //R
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[7], 0.0001); //P
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[8], 0.0001); //U
     }
     
     public void testString2() {
@@ -115,14 +115,14 @@ public class BidTrainingDataTest {
         
         //test outputs
         double[] outputs = btd.getOutputs();
-        assertEquals(NeuralNetwork.LOW, outputs[0], 0.0001); //1C
-        assertEquals(NeuralNetwork.LOW, outputs[1], 0.0001); //1D
-        assertEquals(NeuralNetwork.LOW, outputs[2], 0.0001); //1H
-        assertEquals(NeuralNetwork.LOW, outputs[3], 0.0001); //1S
-        assertEquals(NeuralNetwork.LOW, outputs[4], 0.0001); //1N
-        assertEquals(NeuralNetwork.LOW, outputs[5], 0.0001); //D
-        assertEquals(NeuralNetwork.LOW, outputs[6], 0.0001); //R
-        assertEquals(NeuralNetwork.HIGH, outputs[7], 0.0001); //P
-        assertEquals(NeuralNetwork.LOW, outputs[8], 0.0001); //U
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[0], 0.0001); //1C
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[1], 0.0001); //1D
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[2], 0.0001); //1H
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[3], 0.0001); //1S
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[4], 0.0001); //1N
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[5], 0.0001); //D
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[6], 0.0001); //R
+        assertEquals(OneLevelNeuralNetwork.HIGH, outputs[7], 0.0001); //P
+        assertEquals(OneLevelNeuralNetwork.LOW, outputs[8], 0.0001); //U
     }
 }
