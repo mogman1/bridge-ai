@@ -23,7 +23,7 @@ public class HiddenHand extends Hand {
         this.maximumHcp = maxHcp;
         this.minimumHcp = minHcp;
         
-        String[] suits = shape.split("\\|");
+        String[] suits = shape.split("\\.");
         if (suits.length > 0) this.spadesLength = suits[0].length();
         if (suits.length > 1) this.heartsLength = suits[1].length();
         if (suits.length > 2) this.diamondsLength = suits[2].length();

@@ -52,7 +52,7 @@ public class OpenHand extends Hand {
         Suit s = Suit.SPADES;
         int suitCounter = 1;
         for (int i = 0; i < shape.length(); i++) {
-            if (shape.charAt(i) == '|') {
+            if (shape.charAt(i) == '.') {
                 suitCounter++;
                 if (suitCounter == 2) {
                     s = Suit.HEARTS;

@@ -141,6 +141,11 @@ public class OneLevelNeuralNetwork implements NeuralNetworkInterface {
 		return deltaK;
 	}
 	
+	public void backpropagation(double[] targetOutput) {
+        double[] deltaK = this.adjustOutputWeights(this.getOutputs(), targetOutput);
+        this.adjustHiddenWeights(deltaK);
+	}
+	
 	/**
 	 * Creates a matrix of bias weights from one set of nodes to another.
 	 * Either initializes them to random values or to zero.
@@ -248,13 +253,9 @@ public class OneLevelNeuralNetwork implements NeuralNetworkInterface {
 	}
 	
 	public void train(double[] inputs, double[] targetOutput) {
-		double[] actualOutput = this.computeOutputs(inputs);
-		double[] deltaK = this.adjustOutputWeights(actualOutput, targetOutput);
-		this.adjustHiddenWeights(deltaK);
-		
-		//recompute outputs
+		this.computeOutputs(inputs);
+		this.backpropagation(targetOutput);
 		this.compute();
-		actualOutput = this.getOutputs();
 	}
 
 	/**

@@ -13,7 +13,7 @@ public class BidTrainingDataTest {
     
     @Test
     public void testString1() {
-        String d1 = "QT3|A8752|AK2|53 ****|***|***|*** 0-27 ***|***|****|*** 0-27 ***|**|***|***** 0-27 - - - - H";
+        String d1 = "QT3.A8752.AK2.53 ****.***.***.*** 0-27 ***.***.****.*** 0-27 ***.**.***.***** 0-27 - - - - H";
         BidTrainingData btd = new BidTrainingData(d1);
         double[] inputs = btd.getInputs();
         int p = 0;
@@ -70,7 +70,7 @@ public class BidTrainingDataTest {
     }
     
     public void testString2() {
-        String d1 = "Q52|KJ864|T62|A7 ****|***|***|*** 0-30 ***|***|****|*** 0-30 ***|**|***|***** 0-30 - - - - P";
+        String d1 = "Q52.KJ864.T62.A7 ****.***.***.*** 0-30 ***.***.****.*** 0-30 ***.**.***.***** 0-30 - - - - P";
         BidTrainingData btd = new BidTrainingData(d1);
         double[] inputs = btd.getInputs();
         int p = 0;

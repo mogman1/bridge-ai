@@ -101,9 +101,7 @@ public class OneLevel {
                 this.nn.train(btd.getInputs(), btd.getOutputs());
             }
             
-            if (count % 10000 == 0) {
-                System.out.println(count + ":\t" + this.getError(false));
-            }
+//            if (count % 10000 == 0) System.out.println(count + ":\t" + this.getError(false));
         }
         System.out.println(count);
     }

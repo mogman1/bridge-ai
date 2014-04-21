@@ -22,7 +22,7 @@ public enum Bid {
      */
     NONE;
     
-    public int level;
+    public int level = 0;
     
     public static Bid getFromChar(char b) {
         Bid bid;
@@ -58,6 +58,37 @@ public enum Bid {
         }
         
         return bid;
+    }
+    
+    public int toInt() {
+        int convertedBid = 0;
+        switch(this) {
+            case UNKNOWN:
+            case NONE:
+                convertedBid = 0; break;
+            case PASS:
+                convertedBid = 3; break;
+            case DOUBLE:
+                convertedBid = 6; break;
+            case REDOUBLE:
+                convertedBid = 9; break;
+            case CLUB:
+                convertedBid = 10 * this.level + 0; break;
+            case DIAMOND:
+                convertedBid = 10 * this.level + 2; break;
+            case HEART:
+                convertedBid = 10 * this.level + 4; break;
+            case SPADE:
+                convertedBid = 10 * this.level + 6; break;
+            case NOTRUMP:
+                convertedBid = 10 * this.level + 8; break;
+        }
+        
+        return convertedBid;
+    }
+    
+    public String altToString() {
+        return this.level + " " + this.toString();
     }
     
     @Override

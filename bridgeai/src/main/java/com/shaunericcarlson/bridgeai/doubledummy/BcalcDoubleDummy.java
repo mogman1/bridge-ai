@@ -3,7 +3,6 @@ package com.shaunericcarlson.bridgeai.doubledummy;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
-import java.util.Map;
 
 import com.shaunericcarlson.bridgeai.Direction;
 import com.shaunericcarlson.bridgeai.Hand;
@@ -35,25 +34,25 @@ public class BcalcDoubleDummy extends DoubleDummy {
     }
     
     @Override
-    protected boolean evaluate(Hand[] hands, Direction dealer, Map<Direction, Map<Suit, Integer>> data) {
-        boolean isValid;
+    public DoubleDummyResult evaluate(Hand[] hands, Direction dealer) throws DoubleDummyException {
         String bcalcOutput = this.callBcalcdds(this.getPbnRepresentation(hands, dealer));
         String[] lines = bcalcOutput.split("\\n");
         if (lines.length != 21) {
-            isValid = false;
-        } else {
-            for (int i = 1; i < lines.length; i++) {
-                String[] pieces = lines[i].split(" ");
-                String direction = pieces[2];
-                String suit = pieces[1];
-                String tricks = pieces[0];
-                data.get(Direction.TranslateShortString(direction)).put(Suit.TranslateShortString(suit), Integer.parseInt(tricks));
-            }
-            
-            isValid = true;
+            String vals = "";
+            for (String l : lines) vals += l + "\n";
+            throw new DoubleDummyException("Expected 21 lines, found [" + lines.length + "]:\n" + vals);
         }
-
-        return isValid;
+        
+        DoubleDummyResult ddr = new DoubleDummyResult(hands[0], hands[2]);
+        for (int i = 1; i < lines.length; i++) {
+            String[] pieces = lines[i].split(" ");
+            String direction = pieces[2];
+            String suit = pieces[1];
+            String tricks = pieces[0];
+            ddr.setTrick(Direction.TranslateShortString(direction), Suit.TranslateShortString(suit), Integer.parseInt(tricks));
+        }
+            
+        return ddr;
     }
     
     /**

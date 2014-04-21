@@ -39,7 +39,7 @@ public class MultiLevelNeuralNetwork implements NeuralNetworkInterface {
             this.prevDeltaWeights[i] = this.initializeWeightMatrix(this.nodes[i].length, this.nodes[i+1].length, false);
 	}
 	
-    private void backpropagation(double[] targetOutput) {
+    public void backpropagation(double[] targetOutput) {
         int outputLayer = this.nodes.length - 1;
         double[] deltaErrors = null;
         for (int layer = outputLayer; layer > 0; layer--) {

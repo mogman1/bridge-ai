@@ -1,22 +1,13 @@
 package com.shaunericcarlson.bridgeai;
 
-import com.shaunericcarlson.bridgeai.dealer.FairDealer;
-import com.shaunericcarlson.bridgeai.doubledummy.BcalcDoubleDummy;
-import com.shaunericcarlson.bridgeai.doubledummy.DoubleDummy;
+import com.shaunericcarlson.bridgeai.bidnetwork.FeedbackNetwork;
 
 public class App {
     public static void main(String[] args) {
-        Dealer d = new FairDealer();
-        DoubleDummy dd = new BcalcDoubleDummy();
-        
-        long start = System.currentTimeMillis();
-        final int ITERS = 1000;
-        for (int i = 0; i < ITERS; i++)
-            dd.evaluateDeal(d.deal(), d.getDealer());
-        long end = System.currentTimeMillis();
-        
-        System.out.println(end - start);
-        System.out.println(((end - start) / 1000.0) / ITERS);
+        int hiddenNodesPerLayer = Integer.parseInt(args[0]);
+        int hiddenLayers = Integer.parseInt(args[1]);
+        FeedbackNetwork net = new FeedbackNetwork(hiddenNodesPerLayer, hiddenLayers);
+        net.train();
     }
     
 //    public static void meh(String[] args) throws IOException {

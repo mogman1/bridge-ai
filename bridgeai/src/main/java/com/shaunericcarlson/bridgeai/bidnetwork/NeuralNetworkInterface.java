@@ -2,6 +2,8 @@ package com.shaunericcarlson.bridgeai.bidnetwork;
 
 public interface NeuralNetworkInterface {
     
+    public void backpropagation(double[] targetOutput);
+    
     /**
      * Computes the output values for a given set of inputs.
      * @param inputs
